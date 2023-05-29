@@ -1,0 +1,24 @@
+{% extends 'listings/base.html' %}
+
+{% block content %}
+
+<h2>{{ goody.title }}</h2>
+
+<ul>
+	<li>Type : {{ goody.get_type_display }}</li>
+	<li>Vendu : {{ goody.sold|yesno }}</li>
+	<li>Année de production : {{ goody.year }}</li>
+	{% if goody.band %}
+	<li>Groupe relatif : <a href="{% url 'band-detail' goody.band.id %}">{{ goody.band }}</a></li>
+	{% endif %}
+</ul>
+
+<p>{{ goody.description }}</p>
+
+<a href="{% url 'goody-update' goody.id %}">Modifier ce goody</a>
+
+<a href="{% url 'goody-delete' goody.id %}">Supprimer ce goody</a>
+
+<a href="{% url 'goody-list' %}">Retour aux goodies</a>
+
+{% endblock %}

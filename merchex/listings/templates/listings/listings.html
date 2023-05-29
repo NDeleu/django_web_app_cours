@@ -2,12 +2,16 @@
 
 {% block content %}
 
-	<h1>Listes Goodies</h1>
-	<p>Annonces de Goodies :</p>
+	<h1>Goodies</h1>
+
+	<a href="{% url 'goody-create' %}">Créer un nouveau goody</a>
+
 	<ul>
 		{% for goody in goodies %}
 			<li>
-				{{ goody.title }}
+				<a href="{% url 'goody-detail' goody.id %}">{{ goody.title }}</a>
+				 - <a href="{% url 'goody-update' goody.id %}">[Modifier]</a>
+				 - <a href="{% url 'goody-delete' goody.id %}">[Supprimer]</a>
 			</li>
 		{% endfor %}
 	</ul>
